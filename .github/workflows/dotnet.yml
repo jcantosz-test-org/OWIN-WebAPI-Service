@@ -12,6 +12,9 @@ jobs:
   build:
 
     runs-on: windows-2019
+    # https://stackoverflow.com/questions/64295288/could-not-run-the-generateresource-task-because-msbuild-could-not-create-or-co
+    env:
+        DISABLEOUTOFPROCTASKHOST: 1
 
     steps:
     - uses: actions/checkout@v3
