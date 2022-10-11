@@ -3,6 +3,8 @@ name: .NET
 on:
   push:
     branches: [ "master" ]
+    tags:
+      - '[0-9]+.[0-9]+.[0-9]+*'
   pull_request:
     branches: [ "master" ]
   workflow_dispatch:
@@ -15,13 +17,13 @@ jobs:
     # https://stackoverflow.com/questions/64295288/could-not-run-the-generateresource-task-because-msbuild-could-not-create-or-co
     env:
         DISABLEOUTOFPROCTASKHOST: 1
-
+        CONFIGURATION: 'Debug'
     steps:
+    - name: setup
+      run: |
+        echo "CONFIGURATION='Release'" >> $GITHUB_ENV
+      if: startsWith(github.ref, 'refs/tags/')
     - uses: actions/checkout@v3
-#    - name: Setup .NET
-#      uses: actions/setup-dotnet@v3
-#      with:
-#        dotnet-version: 4.0.x
     - uses: actions/cache@v3
       with:
         path: |
@@ -35,18 +37,22 @@ jobs:
         nuget restore
         dotnet restore
     - name: Build
-      run: dotnet build --no-restore --configuration Debug
+      run: dotnet build --no-restore --configuration $env:CONFIGURATION
     - name: Test
-      run: dotnet test --no-build --verbosity normal --configuration Debug
+      run: dotnet test --no-build --verbosity normal --configuration $env:CONFIGURATION
 
     - uses: actions/upload-artifact@v3
       with:
         name: API
         retention-days: 5
-        path: OWINTest.API\bin\Debug\OWINTest.API.dll
+        path: OWINTest.API\bin\${{ env.CONFIGURATION }}\OWINTest.API.dll
 
     - uses: actions/upload-artifact@v3
       with:
         name: Service
         retention-days: 5
-        path: OWINTest.Service\bin\Debug\OWINTest.Service.exe
+        path: OWINTest.Service\bin\${{ env.CONFIGURATION }}\OWINTest.Service.exe
+
+    - name: create release
+      run: |
+        gh release create ${GITHUB_REF} OWINTest.Service\bin\$env:CONFIGURATION\OWINTest.Service.exe OWINTest.API\bin\$env:CONFIGURATION\OWINTest.API.dll
