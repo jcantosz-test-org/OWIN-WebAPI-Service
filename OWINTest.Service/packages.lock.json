@@ -1,0 +1,61 @@
+{
+  "version": 1,
+  "dependencies": {
+    ".NETFramework,Version=v4.5": {
+      "Microsoft.AspNet.WebApi.Client": {
+        "type": "Direct",
+        "requested": "[5.1.0, 5.1.0]",
+        "resolved": "5.1.0",
+        "contentHash": "69bgRvdn0hXcXks/D8G5p/0roHDKuAPXRiWFOm/O76MIgmj8AAWNjw0ivHfEEGYS0/u1vmVWnch01yJihXPi8g=="
+      },
+      "Microsoft.AspNet.WebApi.Core": {
+        "type": "Direct",
+        "requested": "[5.1.0, 5.1.0]",
+        "resolved": "5.1.0",
+        "contentHash": "4k3lBbwPL0XfcLqq1orujUrUdFW9aijnI3dOXVkHe5embRLYaHKOaVK5E468koJpbqggB3yrBsgHlcZ/PAnZVQ=="
+      },
+      "Microsoft.AspNet.WebApi.Owin": {
+        "type": "Direct",
+        "requested": "[5.1.0, 5.1.0]",
+        "resolved": "5.1.0",
+        "contentHash": "5zaPGMzq+GcDg/0/1kI9Fg7gURLttNvBKOGq4Shn/TsTYSLodrAlPf9JMTr0/K0rAh3KmZ6RacLx4c6dXlAgow=="
+      },
+      "Microsoft.AspNet.WebApi.OwinSelfHost": {
+        "type": "Direct",
+        "requested": "[5.1.0, 5.1.0]",
+        "resolved": "5.1.0",
+        "contentHash": "PkAB9HWiliprlr3RXNsYvuHTKocTmYh8SOTPrr854Ivwim0Lrmf2B4lWjXmfqqiEPFbBzE7eHnbipmnGrARTxw=="
+      },
+      "Microsoft.Owin": {
+        "type": "Direct",
+        "requested": "[2.0.2, 2.0.2]",
+        "resolved": "2.0.2",
+        "contentHash": "WVBkCUzmzuBJbOFSfonVLcErTaj0w0NLTwAFR6NB8K6L4099NdvtSBO29JlLQ+Dzkkr5tgvXdcb++mEijBlhpg=="
+      },
+      "Microsoft.Owin.Host.HttpListener": {
+        "type": "Direct",
+        "requested": "[2.0.2, 2.0.2]",
+        "resolved": "2.0.2",
+        "contentHash": "FvjlLadWzpKE2fZeHoa/d1krcVQ7U5/+D+HC3KL+v+jYyvFsFIobtROX0bTgqWkFYdhS3+AWveck63m4LE6SuA=="
+      },
+      "Microsoft.Owin.Hosting": {
+        "type": "Direct",
+        "requested": "[2.0.2, 2.0.2]",
+        "resolved": "2.0.2",
+        "contentHash": "FH94pnDTejmN+VicQEKYl6J6L4wMSlDYY61Yykhsc7ruJVUIP2wrts67vkyalbHcqaGNCdpYsChd7IOpXUcDzQ=="
+      },
+      "Newtonsoft.Json": {
+        "type": "Direct",
+        "requested": "[4.5.11, 4.5.11]",
+        "resolved": "4.5.11",
+        "contentHash": "IZ0vmfvcJrUONMIG3St+1EzSlnHc9qFY6/FU2YMHNXaGtdm6sSwIUAdXPAw1k3IwpxjVmZ0w9Pzszd8GkyrpFA=="
+      },
+      "Owin": {
+        "type": "Direct",
+        "requested": "[1.0.0, 1.0.0]",
+        "resolved": "1.0.0",
+        "contentHash": "OseTFniKmyp76mEzOBwIKGBRS5eMoYNkMKaMXOpxx9jv88+b6mh1rSaw43vjBOItNhaLFG3d0a20PfHyibH5sw=="
+      }
+    }
+  }
+}

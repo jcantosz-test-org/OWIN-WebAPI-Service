@@ -22,11 +22,31 @@ jobs:
 #      uses: actions/setup-dotnet@v3
 #      with:
 #        dotnet-version: 4.0.x
+    - uses: actions/cache@v3
+      with:
+        path: |
+          ./packages
+          !./packages/unwanted
+        key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-nuget-
     - name: Restore dependencies
       run: |
         nuget restore
         dotnet restore
     - name: Build
-      run: dotnet build --no-restore
+      run: dotnet build --no-restore --configuration Debug
     - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet test --no-build --verbosity normal --configuration Debug
+
+    - uses: actions/upload-artifact@v3
+      with:
+        name: API
+        retention-days: 5
+        path: OWINTest.API\bin\Debug\OWINTest.API.dll
+
+    - uses: actions/upload-artifact@v3
+      with:
+        name: Service
+        retention-days: 5
+        path: OWINTest.Service\bin\Debug\OWINTest.Service.exe

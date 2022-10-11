@@ -6,6 +6,11 @@
     <GenerateResourceMSBuildRuntime>CurrentRuntime</GenerateResourceMSBuildRuntime>
   </PropertyGroup>
   <PropertyGroup>
+    <!--- ... -->
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+    <!--- ... -->
+  </PropertyGroup>
+  <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{040449FC-D996-49AF-BD74-D137D5688992}</ProjectGuid>
