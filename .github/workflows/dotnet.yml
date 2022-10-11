@@ -7,6 +7,8 @@ on:
       - '[0-9]+.[0-9]+.[0-9]+*'
   pull_request:
     branches: [ "master" ]
+  release:
+    type: [published]
   workflow_dispatch:
   
 
@@ -55,5 +57,5 @@ jobs:
 
     - name: create release
       run: |
-        gh release create ${GITHUB_REF} OWINTest.Service\bin\$env:CONFIGURATION\OWINTest.Service.exe OWINTest.API\bin\$env:CONFIGURATION\OWINTest.API.dll
-      if: "${{ env.CONFIGURATION == 'Release'}}"
+        gh release upload $env:GITHUB_REF OWINTest.Service\bin\$env:CONFIGURATION\OWINTest.Service.exe OWINTest.API\bin\$env:CONFIGURATION\OWINTest.API.dll
+      if: startsWith(github.ref, 'refs/tags/')
