@@ -56,3 +56,4 @@ jobs:
     - name: create release
       run: |
         gh release create ${GITHUB_REF} OWINTest.Service\bin\$env:CONFIGURATION\OWINTest.Service.exe OWINTest.API\bin\$env:CONFIGURATION\OWINTest.API.dll
+      if: "${{ env.CONFIGURATION == 'Release'}}"
