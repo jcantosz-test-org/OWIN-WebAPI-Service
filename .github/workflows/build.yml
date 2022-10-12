@@ -1,0 +1,49 @@
+name: .NET Build
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+  workflow_dispatch:
+  
+
+jobs:
+  build:
+
+    runs-on: windows-2019
+    # https://stackoverflow.com/questions/64295288/could-not-run-the-generateresource-task-because-msbuild-could-not-create-or-co
+    env:
+        DISABLEOUTOFPROCTASKHOST: 1
+        CONFIGURATION: 'Debug'
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/cache@v3
+      with:
+        path: |
+          ./packages
+          !./packages/unwanted
+        key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-nuget-
+
+    - name: Restore dependencies
+      run: |
+        nuget restore
+        dotnet restore
+    - name: Build
+      run: dotnet build --no-restore --configuration $env:CONFIGURATION
+    - name: Test
+      run: dotnet test --no-build --verbosity normal --configuration $env:CONFIGURATION
+
+    - uses: actions/upload-artifact@v3
+      with:
+        name: API
+        retention-days: 5
+        path: OWINTest.API\bin\${{ env.CONFIGURATION }}\OWINTest.API.dll
+
+    - uses: actions/upload-artifact@v3
+      with:
+        name: Service
+        retention-days: 5
+        path: OWINTest.Service\bin\${{ env.CONFIGURATION }}\OWINTest.Service.exe
