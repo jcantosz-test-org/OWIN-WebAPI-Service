@@ -40,6 +40,9 @@ jobs:
             secret_2=$(az keyvault secret show --name "cool-secret" --vault-name "secret-stuff" --query "value")
             echo "secret_2=${secret_2}"
             echo "secret_1=${secret_1}"
+            
+            run: echo "SELECTED_COLOR=green" >> $GITHUB_OUTPUT
+
 #            echo "::add-mask::${secret_2}"
 #            echo "secret_2=${secret_2}" >> $GITHUB_OUTPUT
 
@@ -48,9 +51,9 @@ jobs:
         run: |
           echo "secret_1=${secret_1}"
 
-#      - name: show secret output
-#        run: |
-#          echo "secret_2=${{ steps.az-secrets.outputs.secret_2 }}""
+      - name: show secret output
+        run: |
+          echo "secret_2=${{ steps.az-secrets.outputs.SELECTED_COLOR }}""
 
   build-and-deploy-qa:
     runs-on: ubuntu-latest
