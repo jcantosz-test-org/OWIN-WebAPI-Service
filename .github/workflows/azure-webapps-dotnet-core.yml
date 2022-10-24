@@ -28,7 +28,7 @@ jobs:
 
       - name: Try my azure action
         id: test
-        uses: jcantosz/azure-keyvault-action@v1.4
+        uses: jcantosz/azure-keyvault-action@3c51bd4c0e82e1b6a4b48f046e1b8dcc60afb867
         env:
           DEBUG: "true"
         with:
