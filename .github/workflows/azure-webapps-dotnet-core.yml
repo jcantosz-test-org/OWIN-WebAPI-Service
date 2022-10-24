@@ -28,7 +28,7 @@ jobs:
 
       - name: Try my azure action
         id: test
-        uses: jcantosz/azure-keyvault-action@v1.1
+        uses: jcantosz/azure-keyvault-action@v1.2
         with:
           vault-name: 'secret-stuff'
           type: 'secret'
