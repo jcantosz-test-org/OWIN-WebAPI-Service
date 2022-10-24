@@ -41,8 +41,8 @@ jobs:
             echo "secret_2=${secret_2}"
             echo "secret_1=${secret_1}"
             
-            run: echo "SELECTED_COLOR=green" >> $GITHUB_OUTPUT
-
+            echo "SELECTED_COLOR=green" >> $GITHUB_OUTPUT 
+            echo "::set-output name=OTHER_COLOR::purple"
 #            echo "::add-mask::${secret_2}"
 #            echo "secret_2=${secret_2}" >> $GITHUB_OUTPUT
 
