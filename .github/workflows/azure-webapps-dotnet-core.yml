@@ -29,12 +29,14 @@ jobs:
       - name: Try my azure action
         id: test
         uses: jcantosz/azure-keyvault-action@v1.3
+        env:
+          DEBUG: "true"
         with:
           vault-name: 'secret-stuff'
           type: 'secret'
           keys: 'special-secret,cool-secret'
           output-env: 'true'
-          outpu-outputs: 'false'
+          output-outputs: 'false'
         
       - name: 'AZ CLI Action'
         id: az-secrets
