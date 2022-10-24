@@ -26,6 +26,16 @@ jobs:
           az account show
           az group list
 
+      - name: Try my azure action
+        id: test
+        uses: github.com/jcantosz/azure-keyvault-action@v1
+        with:
+          vault-name: 'secret-stuff'
+          type: 'secret'
+          keys: 'special-secret,cool-secret'
+          output-env: 'true'
+          outpu-outputs: 'false'
+        
       - name: 'AZ CLI Action'
         id: az-secrets
         uses: azure/CLI@v1
