@@ -27,17 +27,28 @@ jobs:
           az group list
 
       - name: 'AZ CLI Action'
+        id: az-secrets
         uses: azure/CLI@v1
         with:
           inlineScript: |
             az account show
             secret_1=$(az keyvault secret show --name "special-secret" --vault-name "secret-stuff" --query "value")
+            echo "::add-mask::${secret_1}"
             echo "secret_1=${secret_1}" >> $GITHUB_ENV
+
+
+            secret_2=$(az keyvault secret show --name "cool-secret" --vault-name "secret-stuff" --query "value")
+            echo "::add-mask::${secret_2}"
+            echo "secret_2=${secret_2}" >> $GITHUB_OUTPUT
+
         
       - name: show secret
         run: |
           echo "secret_1=${secret_1}"
 
+      - name: show secret output
+        run: |
+          echo "secret_2=${{ steps.az-secrets.outputs.secret_2 }}""
 
   build-and-deploy-qa:
     runs-on: ubuntu-latest
