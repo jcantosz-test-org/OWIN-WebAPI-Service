@@ -27,6 +27,10 @@ jobs:
           echo "PWD: ${PWD}"
           echo "ls -halt: $(ls -halt)"
           echo "GITHUB_WORKSPACE: ${GITHUB_WORKSPACE}"
+          
+          cd ~
+          echo "PWD: ${PWD}"
+          echo "ls -halt: $(ls -halt)"
   
       - name: 'Run az commands'
         run: |
