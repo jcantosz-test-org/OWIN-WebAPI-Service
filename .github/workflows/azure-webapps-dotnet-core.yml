@@ -32,11 +32,11 @@ jobs:
           inlineScript: |
             az account show
             secret_1=$(az keyvault secret show --name "special-secret" --vault-name "secret-stuff" --query "value")
-            echo "secret_1=$(secret_1)" >> $GITHUB_ENV
+            echo "secret_1=${secret_1}" >> $GITHUB_ENV
         
       - name: show secret
         run: |
-          echo "secret_1=$(secret_1)"
+          echo "secret_1=${secret_1}"
 
 
   build-and-deploy-qa:
