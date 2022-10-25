@@ -39,7 +39,7 @@ jobs:
 
       - name: Try my azure action
         id: test
-        uses: jcantosz/azure-keyvault-action@3aedde469a82b8cd8c6ac9ffcd9c7edb05a081b6
+        uses: jcantosz/azure-keyvault-action@985af22fadc504cf70c154c05553e755fca8a36e
         env:
           DEBUG: "true"
         with:
@@ -49,6 +49,11 @@ jobs:
           outputEnvs: 'true'
           outputOutputs: 'false'
         
+      - name: show secrets
+        run: |
+          echo "special_secret=${special_secret}"
+          echo "cool_secret=${cool_secret}"
+
       - name: 'AZ CLI Action'
         id: az-secrets
         uses: azure/CLI@v1
