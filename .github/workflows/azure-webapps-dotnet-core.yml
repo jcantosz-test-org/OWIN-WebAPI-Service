@@ -45,7 +45,7 @@ jobs:
           objectType: 'secret'
           objectKeys: 'special-secret,cool-secret,-1,'
           outputEnvs: 'true'
-          outputOutputs: 'false'
+          outputOutputs: 'true'
 
       - name: show secrets
         run: |
