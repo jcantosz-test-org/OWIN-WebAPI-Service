@@ -43,11 +43,11 @@ jobs:
         env:
           DEBUG: "true"
         with:
-          vault-name: 'secret-stuff'
-          type: 'secret'
-          keys: 'special-secret,cool-secret'
-          output-env: 'true'
-          output-outputs: 'false'
+          vaultName: 'secret-stuff'
+          objectType: 'secret'
+          objectKeys: 'special-secret,cool-secret'
+          outputEnvs: 'true'
+          outputOutputs: 'false'
         
       - name: 'AZ CLI Action'
         id: az-secrets
