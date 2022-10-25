@@ -54,6 +54,14 @@ jobs:
           echo "${test}"
           echo "${{ steps.test.outputs.special_secret }}"
 
+      - name: show outputs
+        env:
+          testOutput: "${{ steps.test.outputs }}"
+        run: |
+          echo "${testOutput}"
+          echo "${{ steps.test.outputs }}"
+
+
       - name: show secrets
         env:
           test: "${{ steps.test.outputs.special_secret }}"
