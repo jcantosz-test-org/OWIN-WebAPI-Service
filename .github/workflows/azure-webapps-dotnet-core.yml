@@ -51,6 +51,13 @@ jobs:
         env:
           test: "${{ steps.test.outputs.special_secret }}"
         run: |
+          echo "${test}"
+          echo "${{ steps.test.outputs.special_secret }}"
+
+      - name: show secrets
+        env:
+          test: "${{ steps.test.outputs.special_secret }}"
+        run: |
           echo "special_secret=${special_secret}"
           echo "cool_secret=${cool_secret}"
           echo "_1=${_1}"
