@@ -53,7 +53,7 @@ jobs:
           echo "cool_secret=${cool_secret}"
           echo "_1=${_1}"
           echo "steps.test.outputs.special_secret=${{ steps.test.outputs.special_secret }}"
-          echo "steps.test.outputs.cool_secret=${{ steps.test.outputs.special_secret }}"
+          echo "steps.test.outputs.cool_secret=${{ steps.test.outputs.cool_secret }}"
           echo "steps.test.outputs._1=${{ steps.test.outputs._1 }}"
 
       - name: 'AZ CLI Action'
