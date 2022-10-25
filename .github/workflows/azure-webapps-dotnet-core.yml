@@ -39,7 +39,7 @@ jobs:
 
       - name: Try my azure action
         id: test
-        uses: jcantosz/azure-keyvault-action@d31da4977174897c982aa03f4ecea9ce13b23d24
+        uses: jcantosz/azure-keyvault-action@15e1d2bf174c0f2b83e4c6238bf93ba3aca001e7
         with:
           vaultName: 'secret-stuff'
           objectType: 'secret'
