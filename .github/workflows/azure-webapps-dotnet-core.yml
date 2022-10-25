@@ -40,15 +40,13 @@ jobs:
       - name: Try my azure action
         id: test
         uses: jcantosz/azure-keyvault-action@985af22fadc504cf70c154c05553e755fca8a36e
-        env:
-          DEBUG: "true"
         with:
           vaultName: 'secret-stuff'
           objectType: 'secret'
-          objectKeys: 'special-secret,cool-secret'
+          objectKeys: 'special-secret,cool-secret,-1,'
           outputEnvs: 'true'
           outputOutputs: 'false'
-        
+
       - name: show secrets
         run: |
           echo "special_secret=${special_secret}"
