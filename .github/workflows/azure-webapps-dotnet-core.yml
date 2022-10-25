@@ -56,7 +56,7 @@ jobs:
 
       - name: show outputs
         run: |
-          echo "${{ fromJSON(steps.test.outputs) }}"
+          echo "${{ steps.test.outputs }}"
 
 
       - name: show secrets
