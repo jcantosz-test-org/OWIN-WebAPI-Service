@@ -52,3 +52,9 @@ jobs:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         gh release upload $env:GITHUB_REF_NAME OWINTest.Service\bin\$env:CONFIGURATION\OWINTest.Service.exe OWINTest.API\bin\$env:CONFIGURATION\OWINTest.API.dll
+
+    - name: create release 2
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        gh release upload  OWINTest.API\bin\
