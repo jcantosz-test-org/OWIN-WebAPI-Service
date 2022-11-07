@@ -20,4 +20,4 @@ jobs:
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-        gh release $env:GITHUB_REF_NAME --draft=false --prerelease=false --notes "changed to release"
+        gh release edit $env:GITHUB_REF_NAME --draft=false --prerelease=false --notes "changed to release"
