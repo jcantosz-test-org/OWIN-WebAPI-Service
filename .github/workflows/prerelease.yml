@@ -1,8 +1,8 @@
-name: Draft Release
+name: Prerelease
 
 on:
   release:
-    types: [unpublished]
+    types: [prereleased]
   workflow_dispatch:
   
 
@@ -20,4 +20,4 @@ jobs:
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-        gh release $env:GITHUB_REF_NAME --prerelease --notes "changed to prerelease"
+        gh release $env:GITHUB_REF_NAME --draft=false --prerelease=false --notes "changed to release"
