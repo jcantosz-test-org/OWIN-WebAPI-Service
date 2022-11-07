@@ -17,7 +17,15 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: create release 2
+
+    - name: Download file
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        gh release download $env:GITHUB_REF_NAME --pattern 'file.txt'
+        Get-Content file.txt
+
+    - name: prerelease to release
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
