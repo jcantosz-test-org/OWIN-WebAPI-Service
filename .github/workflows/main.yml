@@ -1,0 +1,23 @@
+name: Draft Release
+
+on:
+  release:
+    types: [unpublished]
+  workflow_dispatch:
+  
+
+jobs:
+  build:
+
+    runs-on: windows-2019
+    # https://stackoverflow.com/questions/64295288/could-not-run-the-generateresource-task-because-msbuild-could-not-create-or-co
+    env:
+        DISABLEOUTOFPROCTASKHOST: 1
+        CONFIGURATION: 'Release'
+
+    steps:
+    - name: create release 2
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        gh release $env:GITHUB_REF_NAME --prerelease --notes "changed to prerelease"
