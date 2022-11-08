@@ -4,7 +4,9 @@ on:
   release:
     types: [published]
   workflow_dispatch:
-  
+    inputs:
+      version:
+        type: environment
 
 jobs:
   build:
@@ -16,9 +18,11 @@ jobs:
         CONFIGURATION: 'Release'
 
     steps:
+    - name: version-script
+      run: test -z "${version}" && echo "version=$env:GITHUB_REF_NAME"  >> $GITHUB_ENV
     - uses: actions/checkout@v3
     - name: Script
-      run:
+      run: |
         $dow = (Get-Date -UnixTimeSeconds)
         echo $dow
     - uses: actions/cache@v3
