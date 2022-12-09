@@ -15,7 +15,7 @@ jobs:
           npm install -g semver
           git fetch --tags
           git tag
-          CURR_TAG=$(git tag | sort -Vr | grep "v?[0-9]*\.[0-9]*\.[0-9]*" | head -1)
+          CURR_TAG=$(git tag | sort -Vr | grep "v\?[0-9]*\.[0-9]*\.[0-9]*" | head -1)
           test -z "${CURR_TAG}" && CURR_TAG="0.0.1"
           NEW_TAG=$(semver ${CURR_TAG} -i)
           echo $NEW_TAG
@@ -33,7 +33,7 @@ jobs:
           set -x
           npm install -g semver
           git tag
-          CURR_TAG=$(git tag | sort -Vr | grep "v?[0-9]*\.[0-9]*\.[0-9]*" | head -1)
+          CURR_TAG=$(git tag | sort -Vr | grep "v\?[0-9]*\.[0-9]*\.[0-9]*" | head -1)
           test -z "${CURR_TAG}" && CURR_TAG="0.0.1"
           NEW_TAG=$(semver ${CURR_TAG} -i)
           echo $NEW_TAG
