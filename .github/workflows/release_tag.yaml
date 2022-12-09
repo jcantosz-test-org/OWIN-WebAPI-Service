@@ -1,0 +1,21 @@
+name: Bump version
+on: 
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Bump version, push tag and create release branch
+        env: 
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: | 
+          set -x
+          npm install -g semver
+          git tag
+          CURR_TAG=$(git tag | sort -Vr | grep "v[0-9]*\.[0-9]*\.[0-9]*" | head -1)
+          test -z "${CURR_TAG}" && CURR_TAG="0.0.1"
+          NEW_TAG=$(semver ${CURR_TAG} -i)
+          echo $NEW_TAG
+          #gh release create v${NEW_TAG} --generate-notes
