@@ -15,7 +15,6 @@ jobs:
     environment: dev
     steps:
       - name: 'Az CLI login'
-        id: ''
         uses: azure/login@v1
         with:
           client-id: ${{ secrets.AZURE_CLIENT_ID }}
@@ -24,7 +23,6 @@ jobs:
   
     
       - name: 'get deets'
-        id: ''
         run: |
           echo "PWD: ${PWD}"
           echo "ls -halt: $(ls -halt)"
@@ -35,7 +33,6 @@ jobs:
           echo "ls -halt: $(ls -halt)"
   
       - name: 'Run az commands'
-        id: ''
         run: |
           az account show
           az group list
