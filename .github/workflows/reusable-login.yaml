@@ -1,0 +1,39 @@
+on:
+  workflow_call:
+    inputs:
+      environment:
+        required: true
+        type: string
+    secrets:
+      AZURE_CLIENT_ID:
+        required: true
+      AZURE_TENANT_ID:
+        required: true
+      AZURE_SUBSCRIPTION_ID:
+        required: true
+jobs:
+  az-work:
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.environment }}
+    steps:
+      - name: 'Az CLI login'
+        uses: azure/login@v1
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+      - name: 'AZ CLI Action'
+        id: az-secrets
+        uses: azure/CLI@v1
+        with:
+          inlineScript: |
+            secret_1=$(az keyvault secret show --name "special-secret" --vault-name "secret-stuff" --query "value")
+            # Mask out the secret in logs
+            echo "::add-mask::${secret_1}"
+            # Add the secret as an environment variable
+            echo "secret_1=${secret_1}" >> $GITHUB_ENV
+        
+      - name: show secret
+        run: |
+          echo "secret_1=${secret_1}"
