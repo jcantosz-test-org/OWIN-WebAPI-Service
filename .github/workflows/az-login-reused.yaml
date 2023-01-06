@@ -1,0 +1,18 @@
+name: AZ resuable read keyvault
+
+on:
+  workflow_dispatch:
+  
+permissions:
+  id-token: write # This is required for requesting the JWT
+  contents: read  # This is required for actions/checkout
+
+jobs: 
+  build-and-deploy-dev:
+    uses: ./.github/workflows/reusable-login.yaml
+    with:
+      environment: "dev"
+    secrets:
+      AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+      AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+      AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
