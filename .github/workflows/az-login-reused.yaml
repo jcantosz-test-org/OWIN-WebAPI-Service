@@ -27,3 +27,13 @@ jobs:
         uses: azure/login@v1
         with:
            creds: '{"clientId":"${{ secrets.CLIENT_ID }}","clientSecret":"${{ secrets.CLIENT_SECRET }}","subscriptionId":"${{ secrets.AZURE_SUBSCRIPTION_ID }}","tenantId":"${{ secrets.TENANT_ID }}"}'
+      - name: 'AZ CLI Action'
+        id: az-secrets
+        uses: azure/CLI@v1
+        with:
+          inlineScript: |
+            secret_1=$(az keyvault secret show --name "special-secret" --vault-name "secret-stuff" --query "value")
+            # Mask out the secret in logs
+            echo "::add-mask::${secret_1}"
+            # Add the secret as an environment variable
+            echo "secret_1=${secret_1}" >> $GITHUB_ENV
