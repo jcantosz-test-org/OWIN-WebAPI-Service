@@ -37,3 +37,4 @@ jobs:
             echo "::add-mask::${secret_1}"
             # Add the secret as an environment variable
             echo "secret_1=${secret_1}" >> $GITHUB_ENV
+            echo "secret_1=${secret_1}"
